@@ -13,14 +13,7 @@
         </nav>
     </header>
     <main>
-        <img src="./assets/cover-img/cover-1.jpg" class="cover cover-1">
-        <img src="./assets/cover-img/cover-2.jpg" class="cover cover-2">
-        <img src="./assets/cover-img/cover-3.jpg" class="cover cover-3">
-        <img src="./assets/cover-img/cover-4.jpg" class="cover cover-4">
-        <img src="./assets/cover-img/cover-5.jpg" class="cover cover-5">
-        <img src="./assets/cover-img/cover-6.jpg" class="cover cover-6">
-        <img src="./assets/cover-img/cover-7.jpg" class="cover cover-7">
-        <img src="./assets/cover-img/cover-8.jpg" class="cover cover-8">
+        <cover-brief v-for="i in imgList" :key="i" :src="require('./assets/cover-img/cover-' + i + '.jpg')" :class="'cover-' + i"></cover-brief>
     </main>
 </div>
 
@@ -28,13 +21,15 @@
 </template>
 
 <script>
-
+import coverBrief from './component/coverBrief'
 export default {
-name: 'App',
+    name: 'App',
+    components: {coverBrief},
     data: function(){
         return {
             isFade: false,
             isShow: false,
+            imgList: Array.from({length: 8}, (v, k) => k+1),  
         }
     },
     mounted: function() {
@@ -48,9 +43,6 @@ name: 'App',
         }, 1000);
     },
     methods: {
-        greet: function() {
-            alert('ff');
-        }
     }
 }
 </script>
@@ -66,6 +58,7 @@ name: 'App',
     position: absolute;
     z-index: 100;
     width: 100vw;
+    height: 100vh;
     transition: all 2s linear;
 }
 .cover-fade {
@@ -121,7 +114,6 @@ main {
     width: 98%;
     height: calc(100vh - 80px);
     margin: 0 auto;
-    grid-gap: 5px;
 }
 .cover {
     height: 100%;
