@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import coverBrief from './component/coverBrief'
+import coverBrief from './components/coverBrief'
 export default {
     name: 'App',
-    components: {coverBrief},
+    components: { coverBrief },
     data: function(){
         return {
             isFade: false,
