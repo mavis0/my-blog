@@ -2,13 +2,13 @@
 <div id="app">
     <img id="cover" src="./assets/IMG-novaeangliae.jpg" :class="{'cover-fade': isFade}" />
     <header>
-        <img id="icon" class='animate__animated animate__pulse animate__slow animate__infinite' src="./assets/IMG-stick.png"/>
+        <img id="icon" @click="goHome" class='animate__animated animate__pulse animate__slow animate__infinite' src="./assets/IMG-stick.png"/>
         <nav>
             <ul>
                 <li><router-link to="/home">HOME</router-link></li>
                 <li><router-link to="/articles">ARTICLES</router-link></li>
-                <li>ABOUT</li>
-                <li>CONTACT</li>
+                <li><router-link to="/about">ABOUT</router-link></li>
+                <li><router-link to="/contact">CONTACT</router-link></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +35,9 @@ export default {
         }, 1000);
     },
     methods: {
+        goHome: function() {
+            this.$router.push('/');
+        }
     }
 }
 </script>
@@ -44,18 +47,14 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
-a {
-    color: black;
-    text-decoration: none;
-}
 #cover {
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     position: absolute;
     z-index: 100;
-    width: 100vw;
-    height: 100vh;
-    transition: all 2s linear;
+    transition: all 1.5s linear;
 }
 .cover-fade {
     opacity: 0;
@@ -79,6 +78,7 @@ header {
     left: 10%;
     width: 80px;
     position: absolute;
+    cursor: pointer;
 }
 nav {
     margin: 0 auto;
@@ -96,7 +96,11 @@ li {
     font-size: 20px;
     cursor: pointer;
 }
-li:hover {
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
     color: blue;
     font-size: 22px;
 }
