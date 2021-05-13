@@ -22,7 +22,8 @@ main {
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(3, 33.3%);
     width: 98%;
-    height: calc(100vh - 80px);
+    grid-gap: 5px;
+    height: calc(100vh - 80px - 5px);
     margin: 0 auto;
 }
 .cover-1 {
