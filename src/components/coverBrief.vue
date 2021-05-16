@@ -2,11 +2,11 @@
 <div id="wrap">
     <img :src="src" />
     <section id="title">
-        <h3>这是第三篇</h3>
-        <span>2020.3.15</span>
+        <h3>{{ briefInfo.title }}</h3>
+        <span>{{ dateNor(briefInfo.createTime) }}</span>
     </section>
     <caption>
-        fasdfasdfjalksjf;ajkfa;sljfalkj
+        {{ briefInfo.excerpt }}
     </caption>
 </div>
 </template>
@@ -14,7 +14,15 @@
 <script>
 
 export default {
-    props: ['src'],
+    props: {
+        'src': String,
+        'briefInfo': { type: Object, default: function() { return { createTime: ''} }}
+    },
+    methods: {
+        dateNor: function (d) {
+            return d.replace(/T/, ' ').replace(/\..+/, '');
+        }
+    }
 }
 </script>
 

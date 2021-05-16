@@ -41,12 +41,14 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+</style>
+<style scoped>
 #cover {
     top: 0;
     left: 0;

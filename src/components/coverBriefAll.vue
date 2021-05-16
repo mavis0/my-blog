@@ -1,6 +1,6 @@
 <template>
     <main>
-        <cover-brief class="cover" v-for="i in imgList" :key="i" :src="require('../assets/cover-img/cover-' + i + '.jpg')" :class="'cover-' + i"></cover-brief>
+        <cover-brief class="cover" v-for="i in imgList" :key="i" :src="require('../assets/cover-img/cover-' + i + '.jpg')" :class="'cover-' + i" :briefInfo="briefInfos[i-1]"></cover-brief>
     </main>
 </template>
 
@@ -10,9 +10,13 @@ export default {
     components: { coverBrief },
     data: function() {
         return {
-            imgList: Array.from({length: 8}, (v, k) => k+1),  
+            imgList: Array.from({length: 8}, (v, k) => k+1),
+            briefInfos: [],
         }
     },
+    created: function() {
+        this.axios.get('http://localhost:3000/').then((response) => this.briefInfos = response.data);
+    }
 }
 </script>
 
