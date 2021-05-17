@@ -13,11 +13,16 @@ import 'github-markdown-css'
 export default {
     data: function() {
         return {
-            blog: { createTime: ''},
+            blog: { createTime: '', body: ''},
         }
     },
     created: function() {
-        this.axios.get('http://localhost:3000/post/' + this.$route.params.id).then((response) => this.blog = response.data);
+        this.axios.get('http://localhost:3000/backend/post/' + this.$route.params.id).then( response => {
+            if (!Array.isArray(response.data) && response.data === 'not find') {
+                this.$router.push('/404');
+            }
+            this.blog = response.data;
+        });
     },
     methods: {
         dateNor: function (d) {

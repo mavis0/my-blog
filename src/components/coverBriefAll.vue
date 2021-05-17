@@ -15,7 +15,7 @@ export default {
         }
     },
     created: function() {
-        this.axios.get('http://localhost:3000/').then((response) => this.briefInfos = response.data);
+        this.axios.get('http://localhost:3000/backend/').then((response) => this.briefInfos = response.data);
     }
 }
 </script>

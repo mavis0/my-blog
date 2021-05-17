@@ -2,7 +2,7 @@
 <div id="contentBrief">
     <div class="wrap" v-for="(briefInfo, key) in briefInfos" :key="key">
         <section class="header">
-            <h1>{{ briefInfo.title }}</h1>
+            <h1 @click="$router.push('/post/' + briefInfo.id)">{{ briefInfo.title }}</h1>
             <span>{{ dateNor(briefInfo.createTime) }} · {{ briefInfo.view }}阅读</span>
         </section>
         <section class="content">
@@ -20,7 +20,7 @@ export default {
         }
     },
     created: function() {
-        this.axios.get('http://localhost:3000/posts').then((response) => this.briefInfos = response.data);
+        this.axios.get('http://localhost:3000/backend/posts').then((response) => this.briefInfos = response.data);
     },
     methods: {
         dateNor: function (d) {
@@ -38,6 +38,10 @@ export default {
 }
 h1 {
     margin-bottom: 10px;
+    cursor: pointer;
+}
+h1:hover {
+    color: blue;
 }
 .wrap {
     width: 50%;

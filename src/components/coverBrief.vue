@@ -1,5 +1,5 @@
 <template>
-<div id="wrap">
+<div id="wrap" @click="$router.push('/post/' + briefInfo.id)">
     <img :src="src" />
     <section id="title">
         <h3>{{ briefInfo.title }}</h3>
@@ -29,6 +29,7 @@ export default {
 <style scoped>
 #wrap {
     position: relative;
+    cursor: pointer;
 }
 #wrap:hover caption {
     display: flex;
